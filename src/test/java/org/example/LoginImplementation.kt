@@ -20,28 +20,6 @@ class LoginImplementation : BaseTest() {
         quitAppium()
     }
 
-    @Step("Enter username <username>")
-    fun enterUsername(username: String) {
-        val etUsername = getWebDriverWait().until(
-            ExpectedConditions.visibilityOfElementLocated(
-                View.EDITTEXT_USERNAME.by
-            )
-        )
-
-        etUsername.sendKeys(username)
-    }
-
-    @Step("Click Login button")
-    fun clickLoginButton() {
-        val btnLogin = getWebDriverWait().until(
-            ExpectedConditions.visibilityOfElementLocated(
-                View.BUTTON_LOGIN.by
-            )
-        )
-
-        btnLogin.click()
-    }
-
     @Step("Progress indicator should be <visibility>")
     fun progressIndicatorVisibility(visibility: VISIBILITY) {
         try {
@@ -72,8 +50,6 @@ class LoginImplementation : BaseTest() {
 
     companion object {
         private enum class View(val by: By) {
-            EDITTEXT_USERNAME(By.id(getFullId("etUsername"))),
-            BUTTON_LOGIN(By.id(getFullId("btnLogin"))),
             PROGRESS_INDICATOR(By.id(getFullId("progressIndicator"))),
             TOAST(By.xpath("//android.widget.Toast[1]")),
         }
